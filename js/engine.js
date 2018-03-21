@@ -79,7 +79,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -96,6 +96,24 @@ var Engine = (function(global) {
         player.update();
     }
 
+    function checkCollisions() {
+        for (var i = 0; i < allEnemies.length; i++) {
+            allEnemies[i].checkCollBox();
+            if (player.x < allEnemies[i].r && player.x > allEnemies[i].l && player.y < allEnemies[i].d && player.y > allEnemies[i].u) {
+                player.x = 202;
+                player.y = 400;
+            }
+        }
+    }
+
+    //Create some kind of collision box for the Enemies
+    Enemy.prototype.checkCollBox = function () {
+        this.r = this.x + 65;
+        this.l = this.x - 65;
+        this.u = this.y - 50;
+        this.d = this.y + 50;
+    };
+    
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
      * game tick (or loop of the game engine) because that's how games work -

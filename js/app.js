@@ -30,14 +30,6 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//Create some kind of collision box for the Enemies
-Enemy.prototype.checkCollBox = function() {
-    this.r = this.x + 65;
-    this.l = this.x - 65;
-    this.u = this.y - 50;
-    this.d = this.y + 50;
-};
-
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
@@ -48,15 +40,7 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-    for (var i = 0; i < allEnemies.length; i++) {
-        allEnemies[i].checkCollBox();
-        if (player.x < allEnemies[i].r && player.x > allEnemies[i].l && player.y < allEnemies[i].d && player.y > allEnemies[i].u) {
-            player.x = 202;
-            player.y = 400;
-        }
-    }
     this.checkWon();
-
 };
 
 Player.prototype.render = function() {
