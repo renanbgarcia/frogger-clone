@@ -1,5 +1,7 @@
 # Clone do arcade Frogger
 
+Para acessar o jogo clique aqui: https://renanbgarcia.github.io/frogger-clone/
+
 ## Como rodar
 
 Para jogar basta abrir o arquivo index.html no navegador.
